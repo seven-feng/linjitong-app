@@ -7,9 +7,9 @@
       </div>
     </div>
     <div class="body">
-      <div v-for="(img, index) in imageUrls" :key="index" class="illustration">
+      <el-row v-for="(img, index) in imageUrls" :key="index" class="illustration">
         <img :src="'/TDS' + img">
-      </div>
+      </el-row>
       <div style="color: #606266;" v-html="content"/>
       <div style="font-size: 14px; margin-top: 20px;">
         <a v-for="(file, index) in fileUrls" :key="index" :href="'/TDS' + file" style="text-decoration:underline; margin-right: 10px;">
@@ -22,7 +22,6 @@
 
 <script>
 import { getMessage } from '@/api/table'
-
 export default {
   data() {
     return {
@@ -54,10 +53,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.app-container {
+  margin-bottom: 60px;
+}
 .illustration {
   text-align: center;
   img {
-     max-width: 600px;
+     max-width: 80%;
      margin-top: 10px;
   }
 }

@@ -7,7 +7,7 @@
     </div>
     <div class="card-title">{{ question.title }}</div>
     <div v-for="(img, index) in question.imageUrls" :key="index" class="illustration">
-      <img :src="'/TDS' + img">
+      <img :src="'/TDS' + img" style="width: 50%;">
     </div>
     <div class="card-text">{{ question.content }}</div>
   </el-card>
@@ -41,10 +41,10 @@ export default {
     margin-bottom: 10px;
   }
   .card-head {
-    display: flex;
-    justify-content: space-around;
     font-size: 14px;
     color: #606266;
+    display: flex;
+    justify-content: space-around;
   }
   .card-title {
     font-size: 16px;
@@ -59,11 +59,5 @@ export default {
   /deep/ .el-card__body {
     background-color: rgba(103,194,58,.1);
   }
-  .illustration {
-    text-align: center;
-    img {
-      max-width: 600px;
-      margin-top: 10px;
-    }
-  }
+
 </style>

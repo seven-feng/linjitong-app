@@ -28,10 +28,11 @@
           登录
         </el-button>
       </el-form-item>
-      <!-- <div class="tips">
-        <span style="margin-right:20px;">username: admin</span>
-        <span> password: admin</span>
-      </div> -->
+      <el-form-item>
+        <el-button type="primary" style="width:100%;" @click.native.prevent="handleRegister">
+          注册
+        </el-button>
+      </el-form-item>
     </el-form>
   </div>
 </template>
@@ -93,7 +94,7 @@ export default {
           this.loading = true
           this.$store.dispatch('Login', this.loginForm).then(() => {
             this.loading = false
-            this.$router.push({ path: this.redirect || '/' })
+            this.$router.push({ path: this.redirect || '/app/Home' }) // 默认跳转app首页
           }).catch(() => {
             this.loading = false
           })
@@ -102,6 +103,9 @@ export default {
           return false
         }
       })
+    },
+    handleRegister() {
+      this.$router.push({ name: 'appRegister' })
     }
   }
 }

@@ -113,10 +113,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.tinymce-container {
-  margin-bottom: 22px;
-  max-width: 800px;
-}
-</style>
