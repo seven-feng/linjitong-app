@@ -6,7 +6,7 @@
     if (!clientWidth) {
       return
     }
-    docEl.style.fontSize = 10 * (clientWidth / 320) + 'px'
+    docEl.style.fontSize = 20 * (clientWidth / 320) + 'px'
   }
   if (!doc.addEventListener) {
     return

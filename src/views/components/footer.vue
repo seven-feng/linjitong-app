@@ -23,7 +23,7 @@
     bottom: 0px;
     left: 0px;
     right: 0px;
-    height: 60px;
+    height: 2em;
     width: 100%;
     border-top: 1px solid #ebeef5;
     display: flex;
@@ -35,12 +35,12 @@
     flex-direction: column;
     align-items: center;
     .icon {
-      width: 30px;
-      height: 30px;
+      width: 1.2rem;
+      height: 1.2rem;
       fill: #c0c0c0;
     }
     span {
-      font-size: 14px;
+      font-size: .5rem;
       &.active {
         color: #67C23A;
       }
