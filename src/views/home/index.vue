@@ -6,7 +6,7 @@
         <span class="span-location">杭州</span>
       </section>
       <section>
-        <el-input v-model="input21" placeholder="搜索" prefix-icon="el-icon-search" size="small"/>
+        <el-input v-model="searchContent" placeholder="搜索" prefix-icon="el-icon-search" size="small"/>
       </section>
       <section>
         <svg-icon icon-class="cloudy" class="icon-weather"/>
@@ -121,7 +121,8 @@ export default {
   components: { appFooter },
   data() {
     return {
-      items: ['/static/7.jpg', '/static/3.jpg']
+      items: ['/static/7.jpg', '/static/3.jpg'],
+      searchContent: ''
     }
   },
   methods: {

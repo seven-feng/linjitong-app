@@ -4,3 +4,10 @@ git commit -m "first commit"
 git remote add origin https://github.com/seven-feng/linjitong.git
 git pull origin master
 git push -u origin master
+
+bili: 23.4375
+20px: 0.853
+18px: 0.768
+16px: 0.683
+14px: 0.597
+10px: 0.427

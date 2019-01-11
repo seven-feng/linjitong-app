@@ -1,8 +1,9 @@
 <template>
-  <div class="app-container">
+  <div class="container">
+    <app-header/>
     <div class="head">
-      <h3 style="text-align: center;">{{ title }}</h3>
-      <div v-if="pubdate" style="text-align: center; color: #606266; font-size: 14px">
+      <h3 style="text-align: center; font-size: .768rem;">{{ title }}</h3>
+      <div v-if="pubdate" style="text-align: center; color: #606266; font-size: .597rem">
         <span>编辑：{{ editor }}</span><span style="margin-left: 20px">时间：{{ pubdate }}</span>
       </div>
     </div>
@@ -10,7 +11,7 @@
       <el-row v-for="(img, index) in imageUrls" :key="index" class="illustration">
         <img :src="'/TDS' + img">
       </el-row>
-      <div style="color: #606266;" v-html="content"/>
+      <div style="color: #606266; font-size: .683rem" v-html="content"/>
       <div style="font-size: 14px; margin-top: 20px;">
         <a v-for="(file, index) in fileUrls" :key="index" :href="'/TDS' + file" style="text-decoration:underline; margin-right: 10px;">
           {{ file.substring(file.lastIndexOf('/') + 1, file.length) }}
@@ -21,8 +22,10 @@
 </template>
 
 <script>
+import appHeader from '../components/header'
 import { getMessage } from '@/api/table'
 export default {
+  components: { appHeader },
   data() {
     return {
       id: '', // 消息id
@@ -53,8 +56,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.app-container {
-  margin-bottom: 60px;
+.container {
+  margin-top: 2rem;
+  padding-top: 0.427rem;
+  padding-left: .853rem;
+  padding-right: .853rem;
+  padding-bottom: .853rem;
 }
 .illustration {
   text-align: center;

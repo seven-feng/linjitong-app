@@ -1,14 +1,14 @@
 <template>
-  <div class="contentItem-container">
+  <div class="contentItem-container" @click="handleItem">
     <section class="left">
       <img src="/static/mayi.png">
     </section>
     <section class="right">
       <section>
-        <span class="title">{{ title }}</span>
+        <span class="title">{{ item.title }}</span>
       </section>
       <section>
-        <span class="time">{{ time }}</span>
+        <span class="time">{{ item.pubdate }}</span>
       </section>
     </section>
   </div>
@@ -16,10 +16,27 @@
 
 <script>
 export default {
+  props: {
+    item: {
+      type: Object,
+      default: function() {
+        return {
+          item: {
+            id: '',
+            title: '',
+            pubdate: ''
+          }
+        }
+      }
+    }
+  },
   data() {
     return {
-      title: '省乡土专家首次获得省林业专业高级工程师职称',
-      time: '2016-05-02'
+    }
+  },
+  methods: {
+    handleItem() {
+      this.$router.push({ name: 'appMessageDetail', params: { id: this.item.id }}) // 跳转app消息详情页
     }
   }
 }
