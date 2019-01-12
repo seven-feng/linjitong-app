@@ -121,7 +121,7 @@ export default {
   components: { appFooter },
   data() {
     return {
-      items: ['/static/7.jpg', '/static/3.jpg'],
+      items: ['/static/home1.jpg'],
       searchContent: ''
     }
   },
@@ -141,7 +141,7 @@ export default {
 
 <style lang="scss" scoped>
   .home-container {
-    margin-bottom: 2.56rem;
+    padding-bottom: 2rem;
   }
   .home-header {
     display: flex;

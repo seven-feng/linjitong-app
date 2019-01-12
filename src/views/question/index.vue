@@ -1,9 +1,9 @@
 <template>
-  <div class="app-container">
-    <div style="text-align: center;">
+  <div class="question-container">
+    <div class="question-radio">
       <el-radio-group v-model="radio" size="small" @change="handleRadio">
-        <el-radio-button label="我的提问"/>
-        <el-radio-button label="问题总览"/>
+        <el-radio-button label="myQuestion">我的提问</el-radio-button>
+        <el-radio-button label="allQuestion">问题总览</el-radio-button>
       </el-radio-group>
     </div>
     <router-view/>
@@ -17,12 +17,26 @@ export default {
   components: { appFooter },
   data() {
     return {
-      radio: '问题总览'
+      radio: ''
+    }
+  },
+  created() {
+    if (this.$route.path.indexOf('allQuestion') !== -1) {
+      this.radio = 'allQuestion'
+    } else {
+      this.radio = 'myQuestion'
+    }
+  },
+  updated() {
+    if (this.$route.path.indexOf('allQuestion') !== -1) {
+      this.radio = 'allQuestion'
+    } else {
+      this.radio = 'myQuestion'
     }
   },
   methods: {
     handleRadio(val) {
-      if (val === '我的提问') {
+      if (val === 'myQuestion') {
         this.$router.push({ name: 'myQuestion' })
       } else {
         this.$router.push({ name: 'allQuestion' })
@@ -33,8 +47,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .app-container {
-    margin-bottom: 60px;
+  .question-container {
+    padding-top: 2rem;
+    padding-left: .853rem;
+    padding-right: .853rem;
+    padding-bottom: 2rem;
+    .question-radio {
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 100;
+      width: 100%;
+      height: 2rem;
+      line-height: 2rem;
+      background-color: #ffffff;
+      text-align: center;
+    }
   }
 </style>
 

@@ -1,5 +1,6 @@
 <template>
-  <div class="app-container">
+  <div class="container">
+    <app-header/>
     <el-form ref="form" :model="form" :rules="rules" label-position="right" label-width="60px">
       <el-form-item label="标题" prop="title">
         <el-input v-model="form.title" placeholder="请输入标题" style="min-width: 275px; max-width: 500px;"/>
@@ -35,8 +36,10 @@
 </template>
 
 <script>
+import appHeader from '../../components/header'
 import { postQuestion } from '@/api/table'
 export default {
+  components: { appHeader },
   data() {
     return {
       form: {
@@ -113,3 +116,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .container {
+    padding-top: 2.427rem;
+    padding-left: .853rem;
+    padding-right: .853rem;
+    padding-bottom: .853rem;
+  }
+</style>

@@ -1,12 +1,11 @@
 <template>
-  <div class="app-container">
+  <div class="container">
+    <app-header/>
     <questionCard :question="question"/>
     <answer-card v-for="(answer, index) in answers" :key="index" :answer="answer"/>
-    <div class="btn-container">
-      <el-button type="primary" size="small" @click="handleReply">回复</el-button>
-      <el-button size="small" @click="handleBack">返回</el-button>
+    <div class="reply-btn">
+      <el-button type="primary" style="width: 100%;" @click="handleReply">回复</el-button>
     </div>
-
     <el-dialog :visible.sync="replyDialogVisible" class="reply-dialog">
       <el-form ref="form" :model="form" :rules="rules">
         <el-form-item prop="content">
@@ -22,12 +21,13 @@
 </template>
 
 <script>
+import appHeader from '../../components/header'
 import questionCard from '../component/questionCard'
 import answerCard from '../component/answerCard'
 import { getQuestion, getAnswers, saveAnswer } from '@/api/table'
 import { mapGetters } from 'vuex'
 export default {
-  components: { questionCard, answerCard },
+  components: { appHeader, questionCard, answerCard },
   data() {
     return {
       id: '', // 问题id
@@ -76,9 +76,6 @@ export default {
         }
       })
     },
-    handleBack() { // 返回上一页
-      this.$router.go(-1)
-    },
     handleReply() { // 回复问题
       this.replyDialogVisible = true // 显示回复对话框
       this.form.content = ''
@@ -111,10 +108,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .btn-container {
-    min-width: 275px;
-    max-width: 600px;
-    text-align: center;
+  .container {
+    padding-top: 2.853rem;
+    padding-left: .853rem;
+    padding-right: .853rem;
+    padding-bottom: .853rem;
+    .reply-btn {
+      margin-top: .853rem;
+    }
   }
   /deep/ .el-dialog {
     min-width: 275px;

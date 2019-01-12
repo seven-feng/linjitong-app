@@ -11,18 +11,17 @@
         <el-button slot="append" @click="handleFilter">搜索</el-button>
       </el-input>
     </div>
-    <el-table :data="tableData" :show-header="false" style="width: 100%" @row-click="handleRow">
-      <el-table-column label="标题" prop="title" show-overflow-tooltip min-width="200"/>
-    </el-table>
-    <div class="pagination-container">
-      <el-pagination v-show="total > 0" :page-size="10" :total="total" layout="prev, pager, next" background @current-change="handleCurrentChange"/>
-    </div>
+    <section v-for="(item,index) in tableData" :key="index">
+      <question-item :item="item"/>
+    </section>
   </div>
 </template>
 
 <script>
 import { getQuestionList } from '@/api/table'
+import questionItem from '../component/questionItem'
 export default {
+  components: { questionItem },
   data() {
     return {
       activeName: 'zhusun',
@@ -55,10 +54,6 @@ export default {
     },
     handleFilter() { // 标题过滤
       this.listQuery.page = 1
-      this.getlist()
-    },
-    handleCurrentChange(val) { // 页码切换
-      this.listQuery.page = val
       this.getlist()
     }
   }

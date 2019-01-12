@@ -1,44 +1,38 @@
 <template>
-  <div class="app-container">
-    <el-form ref="form" :model="form" label-position="right" label-width="60px">
-      <el-form-item label="标题">
-        <el-input v-model="form.title" disabled style="min-width: 275px; max-width: 500px;"/>
-      </el-form-item>
-      <el-form-item label="类别">
-        <el-select v-model="form.subType" placeholder="类别" clearable disabled class="filter-item select-disabled" style="min-width: 275px;">
-          <el-option v-for="(item, index) in subTypes" :key="index" :label="item" :value="item"/>
-        </el-select>
-      </el-form-item>
-
-      <el-form-item label="简介">
-        <el-input v-model="form.intro" :rows="6" type="textarea" placeholder="输入内容不要超过255个字" disabled style="min-width: 275px; max-width: 500px;"/>
-      </el-form-item>
-
-      <el-form-item label="附件">
-        <div v-for="(file, index) in form.files" :key="index">
-          <a :href="'/TDS/' + file" style="text-decoration:underline;">
-            {{ file.substring(file.lastIndexOf('/') + 1, file.length) }}
-          </a>
-        </div>
-      </el-form-item>
-    </el-form>
+  <div class="container">
+    <app-header/>
+    <div class="head">
+      <h3 style="text-align: center; font-size: .768rem;">{{ title }}</h3>
+      <div v-if="pubdate" style="text-align: center; color: #606266; font-size: .597rem">
+        <span>类别：{{ subType }}</span><span style="margin-left: .853rem">时间：{{ pubdate }}</span>
+      </div>
+    </div>
+    <div class="body">
+      <div style="color: #606266; font-size: .683rem">
+        <p>{{ intro }}</p>
+      </div>
+      <div style="font-size: 0.597rem; margin-top: .853rem;">
+        <a v-for="(file, index) in fileUrls" :key="index" :href="'/TDS' + file" style="text-decoration:underline; margin-right: 10px;">
+          {{ file.substring(file.lastIndexOf('/') + 1, file.length) }}
+        </a>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import appHeader from '../components/header'
 import { getKnowledge } from '@/api/table'
 export default {
+  components: { appHeader },
   data() {
     return {
-      id: '',
-      form: {
-        title: '',
-        subType: '',
-        intro: '',
-        files: []
-      },
-      types: ['林技产业'],
-      subTypes: ['竹笋', '山核桃', '香榧', '油茶', '花卉苗木', '其他木本粮油', '林下经济']
+      id: '', // 消息id
+      title: '',
+      subType: '',
+      pubdate: '',
+      intro: '',
+      fileUrls: []
     }
   },
   created() {
@@ -46,34 +40,31 @@ export default {
   },
   mounted() {
     getKnowledge(this.id).then(res => {
-      if (res.data !== null) {
-        this.form.title = res.data.title
-        this.form.subType = res.data.subType
-        this.form.intro = res.data.intro
-        this.form.files = res.data.fileUrls
+      if (res.data != null) {
+        this.title = res.data.title
+        this.subType = res.data.subType
+        this.pubdate = res.data.pubdate
+        this.intro = res.data.intro
+        this.fileUrls = res.data.fileUrls
       }
     })
-  },
-  methods: {
-
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  .app-container {
-    margin-bottom: 60px;
+.container {
+  margin-top: 2rem;
+  padding-top: 0.427rem;
+  padding-left: .853rem;
+  padding-right: .853rem;
+  padding-bottom: .853rem;
+}
+.illustration {
+  text-align: center;
+  img {
+     max-width: 80%;
+     margin-top: 10px;
   }
-  /deep/ .select-disabled .el-input__inner {
-    background-color: transparent;
-    color: #000;
-  }
-  /deep/ .el-input.is-disabled .el-input__inner {
-    background-color: transparent;
-    color: #000;
-  }
-  /deep/ .el-textarea.is-disabled .el-textarea__inner {
-    background-color: transparent;
-    color: #000;
-  }
+}
 </style>

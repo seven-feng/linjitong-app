@@ -14,7 +14,7 @@
 </template>
 <script>
 import appHeader from '../components/header'
-import contentItem from '../components/contentItem'
+import contentItem from './contentItem'
 import appFooter from '../components/footer'
 import { getMessageList } from '@/api/table'
 export default {
@@ -43,7 +43,7 @@ export default {
 </script>
 <style lang="scss" scoped>
   .container {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 </style>

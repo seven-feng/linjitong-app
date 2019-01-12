@@ -1,9 +1,11 @@
 <template>
   <div class="header-container">
-    <section @click="handleBack">
-      <svg-icon icon-class="left" class="icon-left" />
+    <section class="icon-left" @click="handleBack">
+      <svg-icon icon-class="left"/>
     </section>
-    <slot name="title"/>
+    <section class="title">
+      <slot name="title"/>
+    </section>
   </div>
 </template>
 
@@ -28,20 +30,18 @@ export default {
     right: 0;
     width: 100%;
     height: 2rem;
+    line-height: 2rem;
     background: #ffffff;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
     color: #000000;
     border-bottom: 1px solid #ebeef5;
+    text-align: center;
     .icon-left {
-      font-size: .9rem;
-      margin-left: .2rem;
-      margin-bottom: .04rem;
+      position: absolute;
+      font-size: 1rem;
+      left: .2rem;
     }
-    span {
-      font-size: .7rem;
-      margin-left: .5rem;
+    .title {
+      font-size: .768rem;
     }
   }
 </style>
