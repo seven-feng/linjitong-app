@@ -1,14 +1,15 @@
 <template>
   <div class="home-container">
     <header class="home-header">
-      <section>
+      <section @click="handleLocation">
         <svg-icon icon-class="location" class="icon-location"/>
-        <span class="span-location">杭州</span>
+        <span v-if="city" class="span-location">{{ city }}</span>
+        <span v-else class="span-location">杭州</span>
       </section>
       <section>
-        <el-input v-model="searchContent" placeholder="搜索" prefix-icon="el-icon-search" size="small"/>
+        <el-input v-model="searchContent" placeholder="搜索" prefix-icon="el-icon-search" size="small" @focus="handleSearch"/>
       </section>
-      <section>
+      <section @click="handleWeather">
         <svg-icon icon-class="cloudy" class="icon-weather"/>
       </section>
     </header>
@@ -121,11 +122,21 @@ export default {
   components: { appFooter },
   data() {
     return {
+      city: '', // 定位城市
       items: ['/static/home1.jpg'],
       searchContent: ''
     }
   },
+  created() {
+    this.city = this.$store.getters.location
+  },
   methods: {
+    handleLocation() {
+      this.$router.push({ name: 'appLocation' })
+    },
+    handleSearch() {
+      this.$router.push({ name: 'appContent' })
+    },
     handleMessage() {
       this.$router.push({ name: 'appMessageList' })
     },
@@ -134,6 +145,9 @@ export default {
     },
     handleQuestion() {
       this.$router.push({ name: 'appQuestion' })
+    },
+    handleWeather() {
+      location.href = 'https://www.baidu.com/s?wd=' + this.city + '天气'
     }
   }
 }

@@ -2,6 +2,14 @@ import request from '@/utils/request'
 import axios from 'axios'
 import { getToken } from '@/utils/auth'
 
+// 获取城市
+export function getSortedCities() {
+  return request({
+    url: '/cities',
+    method: 'get'
+  })
+}
+
 // 获取消息列表
 export function getMessageList(params) {
   return request({

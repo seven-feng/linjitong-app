@@ -45,7 +45,18 @@ export const constantRouterMap = [
     name: 'appRegister',
     component: () => import('@/views/register')
   },
-
+  // 定位
+  {
+    path: '/location',
+    name: 'appLocation',
+    component: () => import('@/views/location')
+  },
+  // 内容搜索
+  {
+    path: '/Content',
+    name: 'appContent',
+    component: () => import('@/views/content')
+  },
   // 消息列表
   {
     path: '/messageList',

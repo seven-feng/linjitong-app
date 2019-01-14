@@ -6,6 +6,9 @@
     <section class="title">
       <slot name="title"/>
     </section>
+    <section class="search">
+      <slot name="search"/>
+    </section>
   </div>
 </template>
 
@@ -42,6 +45,10 @@ export default {
     }
     .title {
       font-size: .768rem;
+    }
+    .search {
+      margin-left: 2rem;
+      margin-right: 2rem;
     }
   }
 </style>
