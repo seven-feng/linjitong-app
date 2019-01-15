@@ -13,9 +13,9 @@
         <svg-icon icon-class="cloudy" class="icon-weather"/>
       </section>
     </header>
-    <el-carousel height="200px">
+    <el-carousel height="6.4rem">
       <el-carousel-item v-for="item in items" :key="item">
-        <img :src="item" alt="" style="width: 100%; height: 200px;">
+        <img :src="item" alt="" style="width: 100%; height: 6.4rem;">
       </el-carousel-item>
     </el-carousel>
     <section>
@@ -106,10 +106,10 @@
     </section>
     <el-row :gutter="2" style="margin-left: 0; margin-right: 0;">
       <el-col :span="12">
-        <img src="/static/left.png" alt="" style="width: 100%;">
+        <img src="/static/left.png" alt="" style="width: 100%;" @click="handleMessage">
       </el-col>
       <el-col :span="12">
-        <img src="/static/right.png" alt="" style="width: 100%;">
+        <img src="/static/right.png" alt="" style="width: 100%;" @click="handleKnowledge">
       </el-col>
     </el-row>
     <app-footer/>

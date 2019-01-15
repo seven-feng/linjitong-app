@@ -26,7 +26,7 @@
       </el-form-item>
       <el-form-item prop="verification">
         <el-input v-model="registerForm.verification" name="verification" type="text">
-          <el-button slot="append" @click="handleVerification">获取验证码</el-button>
+          <el-button slot="suffix" :disabled="verifyBtnDisabled" size="small" type="primary" style="margin-top: 7px;" @click="handleVerification">{{ verifyBtnContent }}</el-button>
         </el-input>
       </el-form-item>
       <el-form-item>
@@ -45,7 +45,7 @@
 // import { isvalidUsername } from '@/utils/validate'
 import { getArea } from '@/api/table'
 import { postVerification } from '@/api/login'
-import { Message } from 'element-ui'
+// import { Message } from 'element-ui'
 export default {
   data() {
     // const validateUsername = (rule, value, callback) => {
@@ -95,7 +95,10 @@ export default {
       loading: false,
       pwdType: 'password',
       redirect: undefined,
-      dialogVisible: false
+      dialogVisible: false,
+      verifyBtnContent: '获取验证码',
+      verifyBtnTime: '30',
+      verifyBtnDisabled: false
     }
   },
   created() {
@@ -122,14 +125,21 @@ export default {
     },
     handleVerification() {
       postVerification(this.registerForm.phone).then(res => {
-        if (res.code === '0') {
-          Message({
-            message: res.message,
-            type: 'success',
-            duration: 5 * 1000
-          })
-        }
       })
+      setTimeout(this.handleVerify, 1000)
+      this.verifyBtnDisabled = true
+    },
+    handleVerify() {
+      if (this.verifyBtnTime < 0) {
+        this.verifyBtnContent = '重新获取'
+        this.verifyBtnTime = 30
+        this.verifyBtnDisabled = false
+        return
+      } else {
+        this.verifyBtnContent = '已发送' + '(' + this.verifyBtnTime + 's)'
+        this.verifyBtnTime--
+        setTimeout(this.handleVerify, 1000)
+      }
     },
     handleRegister() {
       this.$refs.registerForm.validate(valid => {

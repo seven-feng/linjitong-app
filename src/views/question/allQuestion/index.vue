@@ -1,10 +1,10 @@
 <template>
   <div>
-    <el-tabs v-model="activeName" @tab-click="handleTab">
-      <el-tab-pane label="竹笋" name="zhusun"/>
-      <el-tab-pane label="山核桃" name="shanhetao"/>
-      <el-tab-pane label="香榧" name="xiangfei"/>
-      <el-tab-pane label="其他" name="qita"/>
+    <el-tabs v-model="listQuery.subType" @tab-click="handleTab">
+      <el-tab-pane label="竹笋" name="竹笋"/>
+      <el-tab-pane label="山核桃" name="山核桃"/>
+      <el-tab-pane label="香榧" name="香榧"/>
+      <el-tab-pane label="其他" name=""/>
     </el-tabs>
     <div class="filter-container">
       <el-input v-model="listQuery.title" placeholder="标题" type="text" size="small">
@@ -24,7 +24,6 @@ export default {
   components: { questionItem },
   data() {
     return {
-      activeName: 'zhusun',
       total: 10,
       listQuery: {
         page: 1,
@@ -40,7 +39,7 @@ export default {
   },
   methods: {
     handleTab(tab, event) {
-      this.listQuery.subType = tab.label
+      this.listQuery.subType = tab.name
       this.getlist()
     },
     getlist() { // 获取列表
