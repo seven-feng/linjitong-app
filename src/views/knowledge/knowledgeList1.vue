@@ -1,24 +1,24 @@
 <template>
   <div class="container">
     <app-header>
-      <span slot="title">通知公告</span>
+      <span slot="title">空中课堂</span>
     </app-header>
     <section>
-      <img src="/static/shan.jpg" alt="" style="width: 100%; height: 200px;">
+      <img src="/static/knowledge.jpg" alt="" style="width: 100%; height: 200px;">
     </section>
     <section v-for="(item,index) in tableData" :key="index">
-      <content-item :item="item"/>
+      <knowledge-item :item="item"/>
     </section>
     <app-footer/>
   </div>
 </template>
 <script>
 import appHeader from '../components/header'
-import contentItem from './contentItem'
+import knowledgeItem from './knowledgeItem'
 import appFooter from '../components/footer'
-import { getMessageList } from '@/api/table'
+import { getKnowledgeList } from '@/api/table'
 export default {
-  components: { appHeader, contentItem, appFooter },
+  components: { appHeader, knowledgeItem, appFooter },
   data() {
     return {
       listQuery: {
@@ -30,11 +30,11 @@ export default {
     }
   },
   mounted() {
-    this.getlist() // 获取消息列表
+    this.getlist() // 获取知识列表
   },
   methods: {
-    getlist() { // 获取消息列表
-      getMessageList(this.listQuery).then(response => {
+    getlist() { // 获取知识列表
+      getKnowledgeList(this.listQuery).then(response => {
         this.tableData = response.data.list
       })
     }

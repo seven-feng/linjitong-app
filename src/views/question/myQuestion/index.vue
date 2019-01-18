@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { getQuestionList } from '@/api/table'
+import { getMyQuestionList } from '@/api/table'
 import questionItem from '../component/questionItem'
 export default {
   components: { questionItem },
@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     getlist() { // 获取列表
-      getQuestionList(this.listQuery).then(response => {
+      getMyQuestionList(this.listQuery).then(response => {
         this.tableData = response.data.list
       })
     },
@@ -55,6 +55,7 @@ export default {
   .myQuestion-container {
     padding-top: .427rem;
     padding-bottom: .427rem;
+    background-color: #ffffff;
   }
 </style>
 

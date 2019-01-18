@@ -9,7 +9,7 @@
     <!-- <div v-for="(img, index) in question.imageUrls" :key="index" class="illustration">
       <img :src="'/TDS' + img" style="width: 50%;">
     </div> -->
-    <el-carousel indicator-position="none" height="8.53rem">
+    <el-carousel v-if="question.imageUrls.length > 0" indicator-position="none" height="8.53rem">
       <el-carousel-item v-for="(item,index) in question.imageUrls" :key="index">
         <img :src="'/TDS' + item" alt="" style="height: 8.53rem">
       </el-carousel-item>

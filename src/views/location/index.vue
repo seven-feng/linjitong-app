@@ -72,6 +72,7 @@ export default {
     padding-left: 0.853rem;
     padding-right: 0.853rem;
     padding-top: 3rem;
+    background-color: #ffffff;
     .icon-location {
       fill: #4cd964;
       margin-right: .213rem;

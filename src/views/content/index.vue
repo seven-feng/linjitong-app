@@ -47,6 +47,7 @@ export default {
   .content-container {
     font-size: 0.597rem;
     padding-top: 2rem;
+    background-color: #ffffff;
     .city-ul {
       padding-left: 0.853rem;
       padding-right: 0.853rem;

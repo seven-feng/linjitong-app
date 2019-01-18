@@ -99,6 +99,15 @@ export function getQuestionList(params) {
   })
 }
 
+// 获取我的问答列表
+export function getMyQuestionList(params) {
+  return request({
+    url: '/myquestionlist',
+    method: 'get',
+    params
+  })
+}
+
 // 获取问题
 export function getQuestion(id) {
   return request({

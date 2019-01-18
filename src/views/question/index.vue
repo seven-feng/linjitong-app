@@ -52,6 +52,7 @@ export default {
     padding-left: .853rem;
     padding-right: .853rem;
     padding-bottom: 2rem;
+    background-color: #ffffff;
     .question-radio {
       position: fixed;
       left: 0;

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="allQuestion-container">
     <el-tabs v-model="listQuery.subType" @tab-click="handleTab">
       <el-tab-pane label="竹笋" name="竹笋"/>
       <el-tab-pane label="山核桃" name="山核桃"/>
@@ -58,3 +58,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .allQuestion-container {
+    background-color: #ffffff;
+  }
+</style>

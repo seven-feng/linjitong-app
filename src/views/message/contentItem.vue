@@ -1,7 +1,7 @@
 <template>
   <div class="contentItem-container" @click="handleItem">
     <section class="left">
-      <img src="/static/mayi.png">
+      <img :src="imgUrl">
     </section>
     <section class="right">
       <section>
@@ -24,7 +24,8 @@ export default {
           item: {
             id: '',
             title: '',
-            pubdate: ''
+            pubdate: '',
+            content: ''
           }
         }
       }
@@ -32,6 +33,16 @@ export default {
   },
   data() {
     return {
+      imgUrl: ''
+    }
+  },
+  created() {
+    if (this.item.content !== '' && this.item.content.indexOf('img') > 0) { // 从content中提取第一张图片的路径
+      var a = this.item.content.substring(this.item.content.indexOf('img'))
+      var b = a.substring(a.indexOf('src="') + 5, a.indexOf('/>'))
+      this.imgUrl = '/TDS/' + b.substring(0, b.indexOf('"'))
+    } else {
+      this.imgUrl = '/static/mayi.png'
     }
   },
   methods: {

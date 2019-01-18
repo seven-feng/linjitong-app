@@ -210,7 +210,7 @@ $light_gray:#eee;
     width: 520px;
     max-width: 100%;
     padding: 35px 35px 15px 35px;
-    margin: 80px auto;
+    margin: 1.281rem auto;
   }
   .title {
     font-size: 26px;

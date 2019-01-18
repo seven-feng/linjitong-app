@@ -11,7 +11,7 @@
       <el-row v-for="(img, index) in imageUrls" :key="index" class="illustration">
         <img :src="'/TDS' + img">
       </el-row>
-      <div style="color: #606266; font-size: .683rem" v-html="content"/>
+      <div class="message-content" v-html="content"/>
       <div style="font-size: 14px; margin-top: 20px;">
         <a v-for="(file, index) in fileUrls" :key="index" :href="'/TDS' + file" style="text-decoration:underline; margin-right: 10px;">
           {{ file.substring(file.lastIndexOf('/') + 1, file.length) }}
@@ -48,6 +48,8 @@ export default {
         this.pubdate = res.data.pubdate
         this.imageUrls = res.data.imageUrls
         this.content = res.data.content
+        this.content = this.content.split('uploadFile').join('/TDS/uploadFile')
+        this.content = this.content.split('img').join('img style="max-width: 100%;"')
         this.fileUrls = res.data.fileUrls
       }
     })
@@ -69,5 +71,9 @@ export default {
      max-width: 80%;
      margin-top: 10px;
   }
+}
+.message-content {
+  color: #606266;
+  font-size: .683rem;
 }
 </style>

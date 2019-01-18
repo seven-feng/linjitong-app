@@ -1,7 +1,7 @@
 <template>
   <div class="questionItem-container" @click="handleItem">
     <section class="left">
-      <img src="/static/mayi.png">
+      <img :src="imageUrl">
     </section>
     <section class="right">
       <section>
@@ -24,7 +24,8 @@ export default {
           item: {
             id: '',
             title: '',
-            pubdate: ''
+            pubdate: '',
+            images: ''
           }
         }
       }
@@ -32,6 +33,14 @@ export default {
   },
   data() {
     return {
+      imageUrl: ''
+    }
+  },
+  created() {
+    if (this.item.images === '') {
+      this.imageUrl = '/static/mayi.png'
+    } else {
+      this.imageUrl = '/TDS' + this.item.images
     }
   },
   methods: {

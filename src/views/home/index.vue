@@ -158,6 +158,7 @@ export default {
     padding-bottom: 2rem;
   }
   .home-header {
+    background-color: #ffffff;
     display: flex;
     justify-content: space-around;
     align-items: center;
