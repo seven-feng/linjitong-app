@@ -106,10 +106,10 @@
     </section>
     <el-row :gutter="2" style="margin-left: 0; margin-right: 0;">
       <el-col :span="12">
-        <img src="/static/left.png" alt="" style="width: 100%;" @click="handleMessage">
+        <img src="/static/left.jpg" alt="" style="width: 100%;" @click="handleMessage">
       </el-col>
       <el-col :span="12">
-        <img src="/static/right.png" alt="" style="width: 100%;" @click="handleKnowledge">
+        <img src="/static/right.jpg" alt="" style="width: 100%;" @click="handleKnowledge">
       </el-col>
     </el-row>
     <app-footer/>

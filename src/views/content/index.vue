@@ -15,7 +15,7 @@
 
 <script>
 import appHeader from '../components/header'
-import { getMessageList } from '@/api/table'
+import { getMessageList, getKnowledgeList, getQuestionList } from '@/api/table'
 export default {
   components: { appHeader },
   data() {
@@ -32,7 +32,23 @@ export default {
     handleChange() {
       getMessageList(this.listQuery).then(res => {
         if (res.data && res.data.list) {
-          this.tableData = res.data.list
+          res.data.list.map(item => {
+            this.tableData.push(item)
+          })
+        }
+      })
+      getKnowledgeList(this.listQuery).then(res => {
+        if (res.data && res.data.list) {
+          res.data.list.map(item => {
+            this.tableData.push(item)
+          })
+        }
+      })
+      getQuestionList(this.listQuery).then(res => {
+        if (res.data && res.data.list) {
+          res.data.list.map(item => {
+            this.tableData.push(item)
+          })
         }
       })
     },
