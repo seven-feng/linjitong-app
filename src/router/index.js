@@ -53,7 +53,7 @@ export const constantRouterMap = [
   },
   // 内容搜索
   {
-    path: '/Content',
+    path: '/content',
     name: 'appContent',
     component: () => import('@/views/content')
   },

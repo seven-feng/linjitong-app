@@ -8,7 +8,7 @@
         <span class="title">{{ item.title }}</span>
       </section>
       <section>
-        <span class="time">{{ item.pubdate }}</span>
+        <span class="time">{{ item.pubdate | dateFilter }}</span>
       </section>
     </section>
   </div>
@@ -16,6 +16,14 @@
 
 <script>
 export default {
+  filters: {
+    dateFilter(value) {
+      if (!value) {
+        return
+      }
+      return value.substr(0, 10)
+    }
+  },
   props: {
     item: {
       type: Object,
