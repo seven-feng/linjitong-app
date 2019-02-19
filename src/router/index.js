@@ -123,6 +123,13 @@ export const constantRouterMap = [
     component: () => import('@/views/question/publishQuestion'),
     hidden: true
   },
+  // 典型示范列表
+  {
+    path: '/modelList',
+    name: 'appModelList',
+    component: () => import('@/views/model/modelList'),
+    hidden: true
+  },
   { path: '*', redirect: '/404', hidden: true }
 ]
 

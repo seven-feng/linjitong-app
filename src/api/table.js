@@ -178,3 +178,22 @@ export function postUserAuthority(id, roles) {
   })
 }
 
+// 获取典型示范列表
+export function getModelList(params) {
+  return request({
+    url: '/modellist',
+    method: 'get',
+    params
+  })
+}
+
+// 获取典型示范
+export function getModel(id) {
+  return request({
+    url: '/model',
+    method: 'get',
+    params: {
+      id
+    }
+  })
+}

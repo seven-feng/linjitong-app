@@ -51,7 +51,7 @@
           </div>
         </el-col>
         <el-col :span="6">
-          <div class="card-panel" @click="handleMessage">
+          <div class="card-panel" @click="handleModel">
             <div class="card-panel-icon-wrapper">
               <svg-icon icon-class="model" class-name="card-panel-icon" />
             </div>
@@ -145,6 +145,9 @@ export default {
     },
     handleQuestion() {
       this.$router.push({ name: 'appQuestion' })
+    },
+    handleModel() {
+      this.$router.push({ name: 'appModelList' })
     },
     handleWeather() {
       location.href = 'https://www.baidu.com/s?wd=' + this.city + '天气'
