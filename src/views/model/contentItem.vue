@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     handleItem() {
-      this.$router.push({ name: 'appMessageDetail', params: { id: this.item.id }}) // 跳转app消息详情页
+      this.$router.push({ name: 'appModelDetail', params: { id: this.item.id }}) // 跳转app消息详情页
     }
   }
 }

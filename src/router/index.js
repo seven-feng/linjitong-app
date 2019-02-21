@@ -130,6 +130,13 @@ export const constantRouterMap = [
     component: () => import('@/views/model/modelList'),
     hidden: true
   },
+  // 典型示范详情
+  {
+    path: '/modelDetail',
+    name: 'appModelDetail',
+    component: () => import('@/views/model/modelDetail'),
+    hidden: true
+  },
   { path: '*', redirect: '/404', hidden: true }
 ]
 

@@ -4,7 +4,7 @@
       <span slot="title">典型示范</span>
     </app-header>
     <section>
-      <img src="/static/shan.jpg" alt="" style="width: 100%; height: 200px;">
+      <img src="/static/model-home.jpg" alt="" style="width: 100%; height: 200px;">
     </section>
     <section v-for="(item,index) in tableData" :key="index">
       <content-item :item="item"/>
