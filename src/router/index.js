@@ -57,6 +57,18 @@ export const constantRouterMap = [
     name: 'appContent',
     component: () => import('@/views/content')
   },
+  // 系统消息列表
+  {
+    path: '/sysmessage',
+    name: 'appSystemMessage',
+    component: () => import('@/views/sysmessage')
+  },
+  // 系统消息
+  {
+    path: '/sysmessageDetail',
+    name: 'appSystemMessageDetail',
+    component: () => import('@/views/sysmessage/sysmessageDetail')
+  },
   // 消息列表
   {
     path: '/messageList',
@@ -65,7 +77,7 @@ export const constantRouterMap = [
     hidden: true
   },
   {
-    path: '/messageDetail',
+    path: '/messageDetail/:id',
     name: 'appMessageDetail',
     component: () => import('@/views/message/messageDetail'),
     hidden: true
@@ -77,7 +89,7 @@ export const constantRouterMap = [
     hidden: true
   },
   {
-    path: '/knowledgeDetail',
+    path: '/knowledgeDetail/:id',
     name: 'appKnowledgeDetail',
     component: () => import('@/views/knowledge/knowledgeDetail'),
     hidden: true
@@ -112,7 +124,7 @@ export const constantRouterMap = [
     hidden: true
   },
   {
-    path: '/questionDetail',
+    path: '/questionDetail/:id',
     name: 'appQuestionDetail',
     component: () => import('@/views/question/questionDetail'),
     hidden: true
@@ -132,7 +144,7 @@ export const constantRouterMap = [
   },
   // 典型示范详情
   {
-    path: '/modelDetail',
+    path: '/modelDetail/:id',
     name: 'appModelDetail',
     component: () => import('@/views/model/modelDetail'),
     hidden: true
