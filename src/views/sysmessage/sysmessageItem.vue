@@ -3,7 +3,7 @@
     <section class="item">
       <section class="item-top">
         <span class="title">{{ item.title }}</span>
-        <span class="time">{{ item.pubdate | dateFilter }}</span>
+        <span class="time">{{ item.pubdate }}</span>
       </section>
       <section>
         <span class="intro">{{ item.intro }}</span>
@@ -52,13 +52,14 @@ export default {
 <style lang="scss" scoped>
   .sysmessageItem-container {
     width: 100%;
-    height: 3rem;
+    height: 3.1rem;
     border-bottom: 0.025rem solid #f1f1f1;
     padding: .5rem;
     .item {
       width: 100%;
       height: 100%;
       .item-top {
+        margin-top: .2rem;
         display: flex;
         justify-content: space-between;
         .title {
