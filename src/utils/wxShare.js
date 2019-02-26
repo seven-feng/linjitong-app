@@ -13,10 +13,10 @@ const _config={
     url:"",
   },
   defaultWxShareConfig:{
-    title: "默认分享配置title",
-    desc: "默认分享配置desc",
+    title: "浙江省林业技术推广平台",
+    desc: "浙江省林业技术推广平台",
     link: location.href.split("#")[0],
-    imgUrl: 'https://res.wx.qq.com/a/wx_fed/weixin_portal/res/static/img/dNEBuK6.png',
+    imgUrl: 'http://ljt.1vyu.com/static/left.jpg',
     jsApiList:['onMenuShareTimeline', 'onMenuShareAppMessage', 'hideMenuItems', 'closeWindow'],
     hideMenuList:['menuItem:editTag', 'menuItem:delete', 'menuItem:originPage', 'menuItem:readMode', 'menuItem:openWithQQBrowser', 'menuItem:openWithSafari', 'menuItem:share:email', 'menuItem:share:brand']
   },
@@ -26,47 +26,50 @@ const _config={
 function WXShare(config){
   this.config=config||_config;
 }
-WXShare.prototype.wxShareAuth=function(sign_url){
-  let vm=this;
+WXShare.prototype.wxShareAuth = function(sign_url) {
+  let vm = this
   if(!sign_url){
     console.error("缺少授权页面url");
     return;
   }
-  let params = {
-    url: sign_url
-  }
-  return axios.post(vm.config.jsSDKAuth, params).then(res => {
-    if(res.data.code==200){
+  // let params = {
+  //   url: sign_url
+  // }
+  const formData = new FormData()
+  formData.append('url', sign_url)
+  return axios.post(vm.config.jsSDKAuth, formData).then(res => {
+    if(res.status == 200) {
       //更新分享授权签名参数
-      let {appid,jsapi_ticket,noncestr,signature,timestamp,url}=res.data.data;
-      vm.config.shareSign.appid=appid;
-      vm.config.shareSign.jsapi_ticket=jsapi_ticket;
-      vm.config.shareSign.nonceStr=noncestr;
-      vm.config.shareSign.signature=signature;
-      vm.config.shareSign.timestamp=timestamp;
-      vm.config.shareSign.url=url;
+      let { appid, jsapi_ticket, nonceStr, signature, timestamp, url } = res.data
+      vm.config.shareSign.appid = appid
+      vm.config.shareSign.jsapi_ticket = jsapi_ticket
+      vm.config.shareSign.nonceStr = nonceStr
+      vm.config.shareSign.signature = signature
+      vm.config.shareSign.timestamp = timestamp
+      vm.config.shareSign.url = url
     }
-    return res.data;
+    return res.data
   }).catch((err) =>{
     console.log(err.response);
   })
-};
-WXShare.prototype.initWxShare=function(sign_url) {
-  let vm=this;
-  this.wxShareAuth(sign_url).then(()=>{
-    vm.config.wxShareConfig=Object.assign({},vm.config.defaultWxShareConfig);
-    vm.configWXJSSDK();
-  });
-};
+}
 
-WXShare.prototype.updateWxShareConfig=function(shareConfig) {
+WXShare.prototype.initWxShare=function(sign_url) {
+  let vm = this
+  this.wxShareAuth(sign_url).then(() => {
+    vm.config.wxShareConfig = Object.assign({},vm.config.defaultWxShareConfig);
+    vm.configWXJSSDK();
+  })
+}
+
+WXShare.prototype.updateWxShareConfig = function(shareConfig) {
   console.log(shareConfig);
-  if(!shareConfig) return;
-  let {title,desc,link,imgUrl,jsApiList,hideMenuList} =shareConfig;
-  let defaultWxShareConfig=this.config.defaultWxShareConfig;
-  this.config.wxShareConfig.title=title||defaultWxShareConfig.title;
-  this.config.wxShareConfig.desc=desc||defaultWxShareConfig.desc;
-  this.config.wxShareConfig.link=link||defaultWxShareConfig.link;
+  if (!shareConfig) return;
+  let {title,desc,link,imgUrl,jsApiList,hideMenuList} = shareConfig;
+  let defaultWxShareConfig = this.config.defaultWxShareConfig;
+  this.config.wxShareConfig.title = title||defaultWxShareConfig.title;
+  this.config.wxShareConfig.desc = desc||defaultWxShareConfig.desc;
+  this.config.wxShareConfig.link = link||defaultWxShareConfig.link;
   this.config.wxShareConfig.imgUrl = imgUrl||defaultWxShareConfig.imgUrl;
   this.config.wxShareConfig.jsApiList = jsApiList||defaultWxShareConfig.jsApiList;
   this.config.wxShareConfig.hideMenuList = hideMenuList||defaultWxShareConfig.hideMenuList;
@@ -74,24 +77,24 @@ WXShare.prototype.updateWxShareConfig=function(shareConfig) {
   this.configWXJSSDK();
 };
 
-WXShare.prototype.resetWxShareConfig=function() {
-  let {title,desc,link,imgUrl,jsApiList,hideMenuList} =this.config.defaultWxShareConfig;
-  this.config.wxShareConfig.title=title;
-  this.config.wxShareConfig.desc=desc;
-  this.config.wxShareConfig.link=link;
-  this.config.wxShareConfig.imgUrl = imgUrl;
-  this.config.wxShareConfig.jsApiList = jsApiList;
-  this.config.wxShareConfig.hideMenuList = hideMenuList;
+WXShare.prototype.resetWxShareConfig = function() {
+  let { title, desc, link, imgUrl, jsApiList, hideMenuList } = this.config.defaultWxShareConfig
+  this.config.wxShareConfig.title = title
+  this.config.wxShareConfig.desc = desc
+  this.config.wxShareConfig.link = link
+  this.config.wxShareConfig.imgUrl = imgUrl
+  this.config.wxShareConfig.jsApiList = jsApiList
+  this.config.wxShareConfig.hideMenuList = hideMenuList
 
   this.configWXJSSDK();
 };
 WXShare.prototype.updateWxShareSign=function(data) {
 
 };
-WXShare.prototype.configWXJSSDK= function(){
-  let shareSign=this.config.shareSign;
-  let shareConfig=this.config.wxShareConfig;
-  let vm=this;
+WXShare.prototype.configWXJSSDK = function(){
+  let shareSign = this.config.shareSign
+  let shareConfig = this.config.wxShareConfig
+  let vm = this;
   wx.config({
     debug: false,
     appId: shareSign.appid,
@@ -101,8 +104,8 @@ WXShare.prototype.configWXJSSDK= function(){
     jsApiList: shareConfig.jsApiList
   })
   wx.ready(function() {
-    let wxShareConfig = vm.config.wxShareConfig;
-    let {title,desc,link,imgUrl,hideMenuList} = wxShareConfig;
+    let wxShareConfig = vm.config.wxShareConfig
+    let { title, desc, link, imgUrl, hideMenuList } = wxShareConfig
     wx.onMenuShareAppMessage({
       title,
       desc,

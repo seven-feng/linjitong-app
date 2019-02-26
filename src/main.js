@@ -25,7 +25,7 @@ Vue.config.productionTip = false
 let appInit = 0
 import wx from 'weixin-js-sdk'
 Vue.use(wx)
-wxShare.config.jsSDKAuth = '/wxconfig'
+wxShare.config.jsSDKAuth = '/TDS/wxconfig'
 Vue.prototype.$wxShare = wxShare
 
 // 第二步 初始化微信分享

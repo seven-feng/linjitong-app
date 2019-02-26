@@ -37,8 +37,7 @@ export default {
   },
   created() {
     this.id = this.$route.params.id
-  },
-  mounted() {
+
     getKnowledge(this.id).then(res => {
       if (res.data != null) {
         this.title = res.data.title
@@ -47,6 +46,13 @@ export default {
         this.intro = res.data.intro
         this.fileUrls = res.data.fileUrls
       }
+    }).then(() => {
+      this.$wxShare.updateWxShareConfig({
+        title: this.title,
+        desc: this.intro,
+        link: window.location.href.split('#')[0] + 'static/html/redirect.html?app3Redirect=' + encodeURIComponent(window.location.href),
+        imgUrl: 'http://ljt.1vyu.com/static/left.jpg'
+      })
     })
   }
 }

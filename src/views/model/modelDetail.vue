@@ -34,7 +34,8 @@ export default {
       pubdate: '',
       imageUrls: [],
       content: '',
-      fileUrls: []
+      fileUrls: [],
+      intro: ''
     }
   },
   created() {
@@ -51,7 +52,15 @@ export default {
         this.content = this.content.split('uploadFile').join('/TDS/uploadFile')
         this.content = this.content.split('img').join('img style="max-width: 100%;"')
         this.fileUrls = res.data.fileUrls
+        this.intro = res.data.intro
       }
+    }).then(() => {
+      this.$wxShare.updateWxShareConfig({
+        title: this.title,
+        desc: this.intro,
+        link: window.location.href.split('#')[0] + 'static/html/redirect.html?app3Redirect=' + encodeURIComponent(window.location.href),
+        imgUrl: 'http://ljt.1vyu.com/static/left.jpg'
+      })
     })
   }
 }
