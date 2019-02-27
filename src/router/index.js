@@ -59,9 +59,9 @@ export const constantRouterMap = [
   },
   // 系统消息列表
   {
-    path: '/sysmessage',
-    name: 'appSystemMessage',
-    component: () => import('@/views/sysmessage')
+    path: '/sysmessageList',
+    name: 'appSystemMessageList',
+    component: () => import('@/views/sysmessage/sysmessageList')
   },
   // 系统消息
   {
@@ -76,6 +76,7 @@ export const constantRouterMap = [
     component: () => import('@/views/message/messageList'),
     hidden: true
   },
+  // 消息
   {
     path: '/messageDetail/:id',
     name: 'appMessageDetail',

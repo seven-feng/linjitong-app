@@ -13,7 +13,7 @@
 import appHeader from '../components/header'
 import sysmessageItem from './sysmessageItem'
 import appFooter from '../components/footer'
-import { getMessageList } from '@/api/table'
+import { getSysMessageList } from '@/api/table'
 export default {
   components: { appHeader, sysmessageItem, appFooter },
   data() {
@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     getlist() { // 获取消息列表
-      getMessageList(this.listQuery).then(response => {
+      getSysMessageList(this.listQuery).then(response => {
         this.tableData = response.data.list
       })
     }

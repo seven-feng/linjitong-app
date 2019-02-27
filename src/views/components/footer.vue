@@ -4,7 +4,7 @@
       <svg-icon :icon-class="$route.path.indexOf('home') === -1 ? 'home-inactive': 'home-active'" class="icon"/>
       <span :class="$route.path.indexOf('home') === -1 ? 'inactive': 'active'">首页</span>
     </section>
-    <section class="footer-item" @click="$router.push({ name: 'appSystemMessage'})">
+    <section class="footer-item" @click="$router.push({ name: 'appSystemMessageList'})">
       <svg-icon :icon-class="$route.path.indexOf('sysmessage') === -1 ? 'message-inactive' : 'message-active'" class="icon"/>
       <span>消息</span>
     </section>

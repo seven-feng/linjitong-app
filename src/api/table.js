@@ -197,3 +197,23 @@ export function getModel(id) {
     }
   })
 }
+
+// 获取系统消息列表
+export function getSysMessageList(params) {
+  return request({
+    url: '/sysmessagelist',
+    method: 'get',
+    params
+  })
+}
+
+// 获取系统消息
+export function getSysMessage(id) {
+  return request({
+    url: '/sysmessage',
+    method: 'get',
+    params: {
+      id
+    }
+  })
+}

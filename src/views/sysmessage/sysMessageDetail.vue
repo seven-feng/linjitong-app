@@ -23,7 +23,7 @@
 
 <script>
 import appHeader from '../components/header'
-import { getMessage } from '@/api/table'
+import { getSysMessage } from '@/api/table'
 export default {
   components: { appHeader },
   data() {
@@ -41,7 +41,7 @@ export default {
     this.id = this.$route.params.id
   },
   mounted() {
-    getMessage(this.id).then(res => {
+    getSysMessage(this.id).then(res => {
       if (res.data != null) {
         this.title = res.data.title
         this.editor = res.data.editor

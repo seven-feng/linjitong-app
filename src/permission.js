@@ -31,7 +31,7 @@ router.beforeEach((to, from, next) => {
       }
     }
   } else {
-    if (whiteList.indexOf(to.path) !== -1) {
+    if (whiteList.indexOf(to.path) !== -1 || whiteList.indexOf(to.path.substr(to.path.indexOf('/'), to.path.lastIndexOf('/'))) !== -1) { // 排除类似'/messageDetail/:id'的情况
       next()
     } else {
       next(`/login?redirect=${to.path}`) // 否则全部重定向到登录页
