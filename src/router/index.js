@@ -89,6 +89,13 @@ export const constantRouterMap = [
     component: () => import('@/views/knowledge/knowledgeList'),
     hidden: true
   },
+  // 空中课堂 更多
+  {
+    path: '/moreKnowledgeContent',
+    name: 'moreKnowledgeContent',
+    component: () => import('@/views/knowledge/moreKnowledgeContent'),
+    hidden: true
+  },
   {
     path: '/knowledgeDetail/:id',
     name: 'appKnowledgeDetail',

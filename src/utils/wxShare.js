@@ -63,7 +63,6 @@ WXShare.prototype.initWxShare=function(sign_url) {
 }
 
 WXShare.prototype.updateWxShareConfig = function(shareConfig) {
-  console.log(shareConfig);
   if (!shareConfig) return;
   let {title,desc,link,imgUrl,jsApiList,hideMenuList} = shareConfig;
   let defaultWxShareConfig = this.config.defaultWxShareConfig;

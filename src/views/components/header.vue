@@ -14,12 +14,31 @@
 
 <script>
 export default {
+  props: {
+    path: {
+      type: Object,
+      default: function() {
+        return {
+          path: {
+            name: '',
+            params: {}
+          }
+        }
+      }
+    }
+  },
   data() {
-    return {}
+    return {
+    }
   },
   methods: {
     handleBack() {
-      this.$router.go(-1)
+      if (this.path !== null && this.path.name !== undefined && this.path.name !== '') {
+        this.$router.go(-1)
+        this.$router.replace({ name: this.path.name, params: this.path.params }) // 路由回退后，params为{}
+      } else {
+        this.$router.go(-1)
+      }
     }
   }
 }

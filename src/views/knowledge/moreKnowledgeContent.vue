@@ -1,39 +1,45 @@
 <template>
   <div class="container">
     <app-header>
-      <span slot="title">空中课堂</span>
+      <span slot="title">{{ listQuery.subType }}</span>
     </app-header>
-    <section>
-      <img src="/static/knowledge.jpg" alt="" style="width: 100%; height: 200px;">
-    </section>
     <section v-for="(item,index) in tableData" :key="index">
-      <knowledge-item :item="item"/>
+      <content-item :item="item"/>
     </section>
     <app-footer/>
   </div>
 </template>
 <script>
 import appHeader from '../components/header'
-import knowledgeItem from './knowledgeItem'
+import contentItem from './contentItem'
 import appFooter from '../components/footer'
 import { getKnowledgeList } from '@/api/table'
 export default {
-  components: { appHeader, knowledgeItem, appFooter },
+  components: { appHeader, contentItem, appFooter },
   data() {
     return {
       listQuery: {
         page: 1,
-        limit: 20,
-        title: ''
+        limit: 2000,
+        title: '',
+        subType: ''
       },
-      tableData: []
+      tableData: [],
+      path: {
+        name: 'appKnowledgeList',
+        params: {}
+      }
     }
   },
+  created() {
+    debugger
+    this.listQuery.subType = this.$route.params.title
+  },
   mounted() {
-    this.getlist() // 获取知识列表
+    this.getlist() // 获取消息列表
   },
   methods: {
-    getlist() { // 获取知识列表
+    getlist() { // 获取消息列表
       getKnowledgeList(this.listQuery).then(response => {
         this.tableData = response.data.list
       })

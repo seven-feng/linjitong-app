@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <app-header/>
+    <app-header :path="path"/>
     <div class="head">
       <h3 style="text-align: center; font-size: .768rem;">{{ title }}</h3>
       <div v-if="pubdate" style="text-align: center; color: #606266; font-size: .597rem">
@@ -32,7 +32,13 @@ export default {
       subType: '',
       pubdate: '',
       intro: '',
-      fileUrls: []
+      fileUrls: [],
+      path: {
+        name: '',
+        params: {
+          title: ''
+        }
+      }
     }
   },
   created() {
@@ -45,6 +51,11 @@ export default {
         this.pubdate = res.data.pubdate
         this.intro = res.data.intro
         this.fileUrls = res.data.fileUrls
+
+        if (this.$route.params.name) {
+          this.path.name = this.$route.params.name
+          this.path.params.title = this.subType
+        }
       }
     }).then(() => {
       this.$wxShare.updateWxShareConfig({

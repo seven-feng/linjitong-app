@@ -3,21 +3,20 @@
     <app-header>
       <span slot="title">空中课堂</span>
     </app-header>
+    <div class="tab-container">
+      <el-tabs v-model="listQuery.subType" @tab-click="handleTab">
+        <el-tab-pane label="林下经济" name="林下经济"/>
+        <el-tab-pane label="竹笋" name="竹笋"/>
+        <el-tab-pane label="花卉苗木" name="花卉苗木"/>
+        <el-tab-pane label="木本粮油" name="木本粮油"/>
+        <el-tab-pane label="综合" name=""/>
+      </el-tabs>
+    </div>
     <section>
       <img src="/static/knowledge.jpg" alt="" style="width: 100%; height: 200px;">
     </section>
+    <div class="more-content" @click="handleMore">更多></div>
     <div class="knowledge-container">
-      <el-tabs v-model="listQuery.subType" @tab-click="handleTab">
-        <el-tab-pane label="竹笋" name="竹笋"/>
-        <el-tab-pane label="山核桃" name="山核桃"/>
-        <el-tab-pane label="香榧" name="香榧"/>
-        <el-tab-pane label="其他" name=""/>
-      </el-tabs>
-      <!-- <div class="filter-container">
-        <el-input v-model="listQuery.title" placeholder="标题" type="text" size="small">
-          <el-button slot="append" @click="handleFilter">搜索</el-button>
-        </el-input>
-      </div> -->
       <section v-for="(item,index) in tableData" :key="index">
         <knowledge-item :item="item"/>
       </section>
@@ -60,6 +59,9 @@ export default {
     handleFilter() { // 标题过滤
       this.listQuery.page = 1
       this.getlist()
+    },
+    handleMore() { // 更多
+      this.$router.push({ name: 'moreKnowledgeContent', params: { title: this.listQuery.subType }})
     }
   }
 }
@@ -70,9 +72,15 @@ export default {
     padding-top: 2rem;
     padding-bottom: 2rem;
     background-color: #ffffff;
-    .knowledge-container {
+    .knowledge-container, .tab-container {
       padding-left: .853rem;
       padding-right: .853rem;
+    }
+    .more-content {
+      text-align: right;
+      font-size: .597rem;
+      color: #606060;
+      padding-right: .597rem;
     }
   }
 </style>
