@@ -43,6 +43,11 @@ export default {
       tableData: []
     }
   },
+  created() {
+    if (this.$route.params.title) {
+      this.listQuery.subType = this.$route.params.title
+    }
+  },
   mounted() {
     this.getlist()
   },
@@ -61,7 +66,7 @@ export default {
       this.getlist()
     },
     handleMore() { // 更多
-      this.$router.push({ name: 'moreKnowledgeContent', params: { title: this.listQuery.subType }})
+      this.$router.push({ path: '/moreKnowledgeContent', query: { title: this.listQuery.subType }})
     }
   }
 }

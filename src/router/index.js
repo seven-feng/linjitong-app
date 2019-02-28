@@ -96,6 +96,13 @@ export const constantRouterMap = [
     component: () => import('@/views/knowledge/moreKnowledgeContent'),
     hidden: true
   },
+  // 空中课堂 更多 单独显示 去掉回退
+  {
+    path: '/wmoreKnowledgeContent',
+    name: 'wmoreKnowledgeContent',
+    component: () => import('@/views/knowledge/wmoreKnowledgeContent'),
+    hidden: true
+  },
   {
     path: '/knowledgeDetail/:id',
     name: 'appKnowledgeDetail',
@@ -155,6 +162,13 @@ export const constantRouterMap = [
     path: '/modelDetail/:id',
     name: 'appModelDetail',
     component: () => import('@/views/model/modelDetail'),
+    hidden: true
+  },
+  // 联系我们
+  {
+    path: '/contact',
+    name: 'appContact',
+    component: () => import('@/views/contact'),
     hidden: true
   },
   { path: '*', redirect: '/404', hidden: true }

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <app-header :path="path">
+    <app-header>
       <span slot="title">{{ listQuery.subType }}</span>
     </app-header>
     <section v-for="(item,index) in tableData" :key="index">
@@ -10,7 +10,7 @@
   </div>
 </template>
 <script>
-import appHeader from '../components/header'
+import appHeader from '../components/wheader'
 import contentItem from './contentItem'
 import appFooter from '../components/footer'
 import { getKnowledgeList } from '@/api/table'
@@ -24,11 +24,7 @@ export default {
         title: '',
         subType: ''
       },
-      tableData: [],
-      path: {
-        name: 'appKnowledgeList',
-        params: {}
-      }
+      tableData: []
     }
   },
   created() {

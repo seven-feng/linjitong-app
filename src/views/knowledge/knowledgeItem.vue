@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     handleItem() {
-      this.$router.push({ name: 'appKnowledgeDetail', params: { id: this.item.id }}) // 跳转app知识详情页
+      this.$router.push({ name: 'appKnowledgeDetail', params: { id: this.item.id, name: 'appKnowledgeList' }}) // 跳转app知识详情页
     }
   }
 }
