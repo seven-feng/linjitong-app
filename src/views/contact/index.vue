@@ -4,13 +4,11 @@
       <span slot="title">联系我们</span>
     </app-header>
     <section>
-      <img src="/static/shan.jpg" alt="" style="width: 100%; height: 200px;">
+      <img src="/static/contact-main.jpg" alt="" style="width: 100%; height: 200px;">
     </section>
     <section class="info">
-      <div>XXX有限公司</div>
-      <div>地址：xxxxx</div>
-      <div>电话：xxxxx</div>
-      <div>邮箱：xxxx</div>
+      <div>地址：杭州市江干区凯旋路226号</div>
+      <div>电话：0571-187399181</div>
     </section>
     <app-footer/>
   </div>
@@ -34,7 +32,7 @@ export default {
     .info {
       font-size: .683rem;
       margin: 0 auto;
-      width: 50%;
+      width: 50rem;
       div {
         margin: 1rem auto;
       }

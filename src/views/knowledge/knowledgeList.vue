@@ -5,11 +5,11 @@
     </app-header>
     <div class="tab-container">
       <el-tabs v-model="listQuery.subType" @tab-click="handleTab">
+        <el-tab-pane label="综合" name=""/>
         <el-tab-pane label="林下经济" name="林下经济"/>
         <el-tab-pane label="竹笋" name="竹笋"/>
         <el-tab-pane label="花卉苗木" name="花卉苗木"/>
         <el-tab-pane label="木本粮油" name="木本粮油"/>
-        <el-tab-pane label="综合" name=""/>
       </el-tabs>
     </div>
     <section>

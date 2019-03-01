@@ -76,6 +76,7 @@ export default {
   padding-left: .853rem;
   padding-right: .853rem;
   padding-bottom: .853rem;
+  background-color: #ffffff;
 }
 .illustration {
   text-align: center;

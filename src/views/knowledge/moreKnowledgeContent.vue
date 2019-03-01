@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <app-header :path="path">
+    <app-header>
       <span slot="title">{{ listQuery.subType }}</span>
     </app-header>
     <section v-for="(item,index) in tableData" :key="index">
@@ -24,11 +24,7 @@ export default {
         title: '',
         subType: ''
       },
-      tableData: [],
-      path: {
-        name: 'appKnowledgeList',
-        params: {}
-      }
+      tableData: []
     }
   },
   created() {

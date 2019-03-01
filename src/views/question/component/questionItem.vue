@@ -8,7 +8,7 @@
         <span class="title">{{ item.title }}</span>
       </section>
       <section>
-        <span class="time">{{ item.pubdate }}</span>
+        <span class="time">{{ item.pubdate | filters }}</span>
       </section>
     </section>
   </div>

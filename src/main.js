@@ -22,26 +22,21 @@ Vue.use(ElementUI, { locale })
 Vue.config.productionTip = false
 
 // 步骤一 引入 微信 jssdk
-let appInit = 0
 import wx from 'weixin-js-sdk'
 Vue.use(wx)
-wxShare.config.jsSDKAuth = '/TDS/wxconfig'
+let appInit = 0
+wxShare.config.jsSDKAuth = '/TDS/wxconfig' // 从后端获取授权信息
 Vue.prototype.$wxShare = wxShare
 
 // 第二步 初始化微信分享
-if (location.host !== 'localhost:8080') {
-  const sign_url = location.href.split('#')[0]
-  appInit++
-  if (wx) {
-    // 初始化微信分享
-    wxShare.initWxShare(sign_url)
-  }
+const sign_url = location.href.split('#')[0]
+appInit++
+if (wx) {
+  wxShare.initWxShare(sign_url) // 初始化微信分享
 }
 
 // 第三步 监听路由重置微信分享为默认
 router.afterEach(route => {
-  // let url = location.href.split('#')[0]
-  if (!store) return
   if (appInit > 1) {
     wxShare.resetWxShareConfig()
   }

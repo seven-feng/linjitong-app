@@ -3,7 +3,7 @@
     <section class="item">
       <section class="item-top">
         <span class="title">{{ item.title }}</span>
-        <span class="time">{{ item.pubdate }}</span>
+        <span class="time">{{ item.pubdate | filters }}</span>
       </section>
       <section>
         <span class="intro">{{ item.intro }}</span>

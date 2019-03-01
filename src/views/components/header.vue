@@ -33,15 +33,15 @@ export default {
   },
   methods: {
     handleBack() {
-      if (this.path !== null && this.path.name !== undefined && this.path.name !== '') {
-        if (window.history.length <= 1) {
-          this.$router.push({ name: 'appHome' }) // 如果没有回退，全部重定向到首页
-        } else {
+      if (window.history.length <= 1) {
+        this.$router.push({ name: 'appHome' }) // 如果没有回退，全部重定向到首页
+      } else {
+        if (this.path !== null && this.path.name !== undefined && this.path.name !== '') {
           this.$router.go(-1)
           this.$router.replace({ name: this.path.name, params: this.path.params }) // 路由回退后，params为{}
+        } else {
+          this.$router.go(-1)
         }
-      } else {
-        this.$router.go(-1)
       }
     }
   }
