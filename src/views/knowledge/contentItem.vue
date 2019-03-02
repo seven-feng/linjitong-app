@@ -11,7 +11,7 @@
         <span class="intro">{{ item.intro }}</span>
       </section>
       <section>
-        <span class="time">{{ item.pubdate | filters }}</span>
+        <span class="time">{{ item.pubdate | dateFilter }}</span>
       </section>
     </section>
   </div>
