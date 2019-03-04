@@ -16,7 +16,7 @@ const _config = {
     title: "浙江省林业技术推广平台",
     desc: "浙江省林业技术推广平台",
     link: location.href.split("#")[0],
-    imgUrl: 'http://ljt.1vyu.com/static/left.jpg',
+    imgUrl: '',
     jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'hideMenuItems', 'closeWindow'],
     hideMenuList: ['menuItem:editTag', 'menuItem:delete', 'menuItem:originPage', 'menuItem:readMode', 'menuItem:openWithQQBrowser', 'menuItem:openWithSafari', 'menuItem:share:email', 'menuItem:share:brand']
   },
@@ -109,13 +109,13 @@ WXShare.prototype.configWXJSSDK = function(){
       link,
       imgUrl,
       success: function() {
-        alert("分享成功")
+        // alert("分享成功")
       },
       fail:function(){
-        alert("分享失败")
+        // alert("分享失败")
       },
       cancel: function() {
-        alert("取消分享")
+        // alert("取消分享")
       }
     })
     wx.onMenuShareTimeline({
@@ -123,10 +123,10 @@ WXShare.prototype.configWXJSSDK = function(){
       link,
       imgUrl,
       success: function() {
-        alert("分享成功")
+        // alert("分享成功")
       },
       cancel: function() {
-        alert("取消分享")
+        // alert("取消分享")
       }
     })
     wx.hideMenuItems({
@@ -135,7 +135,7 @@ WXShare.prototype.configWXJSSDK = function(){
   }),
   wx.error(function(res) { // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
       config.wx_error = res
-      alert("分享失败: error")
+      // alert("分享失败: error")
   })
 }
 

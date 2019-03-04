@@ -55,11 +55,17 @@ export default {
         this.intro = res.data.intro
       }
     }).then(() => {
+      let imgUrl = ''
+      if (this.content !== '' && this.content.indexOf('img') > 0) { // 从content中提取第一张图片的路径
+        var a = this.content.substring(this.content.indexOf('img'))
+        var b = a.substring(a.indexOf('src="') + 5, a.indexOf('/>'))
+        imgUrl = 'http://ljt.1vyu.com/' + b.substring(0, b.indexOf('"'))
+      }
       this.$wxShare.updateWxShareConfig({
         title: this.title,
         desc: this.intro,
         link: window.location.href.split('#')[0] + 'static/html/redirect.html?app3Redirect=' + encodeURIComponent(window.location.href),
-        imgUrl: 'http://ljt.1vyu.com/static/left.jpg'
+        imgUrl: imgUrl
       })
     })
   }

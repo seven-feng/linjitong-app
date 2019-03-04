@@ -62,7 +62,7 @@ export default {
         title: this.title,
         desc: this.intro,
         link: window.location.href.split('#')[0] + 'static/html/redirect.html?app3Redirect=' + encodeURIComponent(window.location.href),
-        imgUrl: 'http://ljt.1vyu.com/static/left.jpg'
+        imgUrl: ''
       })
     })
   }
