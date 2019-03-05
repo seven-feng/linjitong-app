@@ -171,6 +171,13 @@ export const constantRouterMap = [
     component: () => import('@/views/contact'),
     hidden: true
   },
+  // 空白页
+  {
+    path: '/gap',
+    name: 'appGap',
+    component: () => import('@/views/gap'),
+    hidden: true
+  },
   { path: '*', redirect: '/404', hidden: true }
 ]
 

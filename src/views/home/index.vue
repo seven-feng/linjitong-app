@@ -63,7 +63,7 @@
       </el-row>
       <el-row>
         <el-col :span="6">
-          <div class="card-panel" @click="handleKnowledge">
+          <div class="card-panel" @click="handleGap">
             <div class="card-panel-icon-wrapper">
               <svg-icon icon-class="supply" class-name="card-panel-icon" />
             </div>
@@ -73,7 +73,7 @@
           </div>
         </el-col>
         <el-col :span="6">
-          <div class="card-panel" @click="handleQuestion">
+          <div class="card-panel" @click="handleGap">
             <div class="card-panel-icon-wrapper">
               <svg-icon icon-class="expert" class-name="card-panel-icon" />
             </div>
@@ -83,7 +83,7 @@
           </div>
         </el-col>
         <el-col :span="6">
-          <div class="card-panel" @click="handleMessage">
+          <div class="card-panel" @click="handleGap">
             <div class="card-panel-icon-wrapper">
               <svg-icon icon-class="expertdb" class-name="card-panel-icon" />
             </div>
@@ -151,6 +151,9 @@ export default {
     },
     handleContact() {
       this.$router.push({ name: 'appContact' })
+    },
+    handleGap() {
+      this.$router.push({ name: 'appGap' })
     },
     handleWeather() {
       location.href = 'https://www.baidu.com/s?wd=' + this.city + '天气'
