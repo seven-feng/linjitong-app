@@ -7,7 +7,7 @@
         <span v-else class="span-location">杭州</span>
       </section>
       <section>
-        <el-input v-model="searchContent" placeholder="搜索" prefix-icon="el-icon-search" size="small" @focus="handleSearch"/>
+        <el-input v-model="searchContent" placeholder="搜索" prefix-icon="el-icon-search" size="small" class="input-search" @focus="handleSearch"/>
       </section>
       <section @click="handleWeather">
         <svg-icon icon-class="cloudy" class="icon-weather"/>
@@ -175,6 +175,13 @@ export default {
     .span-location {
       font-size: 0.76rem;
     }
+    .input-search {
+      width: 8.533rem;
+    }
+    /deep/ .el-input--small .el-input__inner {
+      height: 1.365rem;
+      line-height: 1.365rem;
+    }
     .icon-weather {
       width: 1.3rem;
       height: 1.3rem;
@@ -188,33 +195,33 @@ export default {
     background-color: #fff;
   }
   .card-panel {
-    height: 108px;
+    height: 4.608rem;
     cursor: pointer;
-    font-size: 12px;
+    font-size: .512rem;
     position: relative;
     overflow: hidden;
     color: #666;
     background: #fff;
-    border-radius: 4px;
-    box-shadow: 4px 4px 40px rgba(0, 0, 0, .05);
+    // border-radius: 4px;
+    // box-shadow: 4px 4px 40px rgba(0, 0, 0, .05);
     border-color: rgba(0, 0, 0, .05);
     .card-panel-icon-wrapper {
-      margin: 15px auto 10px;
+      margin: .64rem auto .427rem;
       transition: all 0.38s ease-out;
-      border-radius: 6px;
-      width: 50px;
-      height: 50px;
+      // border-radius: 6px;
+      width: 2.133rem;
+      height: 2.133rem;
       text-align: center;
     }
     .card-panel-icon {
-      font-size: 50px;
+      font-size: 2.133rem;
     }
     .card-panel-description {
-      margin-top: 10px;
+      margin-top: .427rem;
       .card-panel-text {
-        line-height: 18px;
+        line-height: .768rem;
         color: rgba(0, 0, 0, 0.45);
-        font-size: 14px;
+        font-size: .597rem;
         text-align: center;
       }
     }

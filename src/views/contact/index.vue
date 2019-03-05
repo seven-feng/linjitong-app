@@ -8,7 +8,7 @@
     </section>
     <section class="info">
       <div>地址：杭州市江干区凯旋路226号</div>
-      <div>电话：0571-187399181</div>
+      <div>电话：0571-87399181</div>
     </section>
     <app-footer/>
   </div>
@@ -31,8 +31,8 @@ export default {
     background-color: #ffffff;
     .info {
       font-size: .683rem;
-      margin: 0 auto;
-      width: 50rem;
+      margin: 2rem auto;
+      width: 11rem;
       div {
         margin: 1rem auto;
       }

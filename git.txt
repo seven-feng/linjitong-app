@@ -6,9 +6,12 @@ git pull origin master
 git push -u origin master
 
 bili: 23.4375
+50px: 2.133
+32px: 1.365
 20px: 0.853
 18px: 0.768
 16px: 0.683
+15px: 0.64
 14px: 0.597
 12px: 0.512
 10px: 0.427
