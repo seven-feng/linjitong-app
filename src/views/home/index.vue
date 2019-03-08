@@ -123,7 +123,7 @@ export default {
   data() {
     return {
       city: '', // 定位城市
-      items: ['/static/home1.jpg'],
+      items: ['/static/home-main.jpg', '/static/home-main1.jpg'],
       searchContent: ''
     }
   },
