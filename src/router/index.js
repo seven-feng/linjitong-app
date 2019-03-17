@@ -164,6 +164,20 @@ export const constantRouterMap = [
     component: () => import('@/views/model/modelDetail'),
     hidden: true
   },
+  // 专家库列表
+  {
+    path: '/expertdbList',
+    name: 'appExpertdbList',
+    component: () => import('@/views/expertdb/expertdbList'),
+    hidden: true
+  },
+  // 专家库详情
+  {
+    path: '/expertdbDetail/:id',
+    name: 'appExpertdbDetail',
+    component: () => import('@/views/expertdb/expertdbDetail'),
+    hidden: true
+  },
   // 联系我们
   {
     path: '/contact',

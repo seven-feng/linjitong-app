@@ -83,7 +83,7 @@
           </div>
         </el-col>
         <el-col :span="6">
-          <div class="card-panel" @click="handleGap">
+          <div class="card-panel" @click="handleExpertdb">
             <div class="card-panel-icon-wrapper">
               <svg-icon icon-class="expertdb" class-name="card-panel-icon" />
             </div>
@@ -151,6 +151,9 @@ export default {
     },
     handleContact() {
       this.$router.push({ name: 'appContact' })
+    },
+    handleExpertdb() {
+      this.$router.push({ name: 'appExpertdbList' })
     },
     handleGap() {
       this.$router.push({ name: 'appGap' })
