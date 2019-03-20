@@ -153,7 +153,7 @@ export default {
       this.$router.push({ name: 'appContact' })
     },
     handleExpertdb() {
-      this.$router.push({ name: 'appExpertdbList' })
+      this.$router.push({ name: 'appExpertList' })
     },
     handleGap() {
       this.$router.push({ name: 'appGap' })

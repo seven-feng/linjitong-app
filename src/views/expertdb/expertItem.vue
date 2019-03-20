@@ -4,14 +4,14 @@
       <img :src="imgUrl">
     </section>
     <section class="right">
-      <div class="title">
-        <span>{{ item.title }}</span>
+      <div class="name">
+        <span>{{ item.name }}</span>
       </div>
       <div class="subTitle">
-        <span>电话：{{ item.pubdate }}</span>
+        <span>电话：{{ item.phone }}</span>
       </div>
       <div class="subTitle">
-        <span>单位：{{ item.pubdate }}</span>
+        <span>单位：{{ item.department }}</span>
       </div>
     </section>
   </div>
@@ -26,9 +26,10 @@ export default {
         return {
           item: {
             id: '',
-            title: '',
-            pubdate: '',
-            content: ''
+            name: '',
+            phone: '',
+            department: '',
+            imageUrls: []
           }
         }
       }
@@ -39,9 +40,14 @@ export default {
       imgUrl: ''
     }
   },
+  created() {
+    if (this.item.imageUrls.length) {
+      this.imgUrl = '/TDS' + this.item.imageUrls[0]
+    }
+  },
   methods: {
     handleItem() {
-      this.$router.push({ name: 'appMessageDetail', params: { id: this.item.id }}) // 跳转app消息详情页
+      this.$router.push({ name: 'appExpertDetail', params: { id: this.item.id }}) // 跳转专家详情页
     }
   }
 }
@@ -68,7 +74,7 @@ export default {
     .right {
       width: calc(100% - 4rem);
       height: 100%;
-      .title {
+      .name {
         font-size: .597rem;
         line-height: .8rem;
         font-weight: 700;

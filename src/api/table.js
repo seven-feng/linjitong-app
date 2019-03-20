@@ -217,3 +217,23 @@ export function getSysMessage(id) {
     }
   })
 }
+
+// 获取专家列表
+export function getExpertList(params) {
+  return request({
+    url: '/expertlist',
+    method: 'get',
+    params
+  })
+}
+
+// 获取专家
+export function getExpert(id) {
+  return request({
+    url: '/expert',
+    method: 'get',
+    params: {
+      id
+    }
+  })
+}
