@@ -106,10 +106,10 @@
     </section>
     <el-row :gutter="2" style="margin-left: 0; margin-right: 0;">
       <el-col :span="12">
-        <img src="/static/left.jpg" alt="" style="width: 100%;" @click="handleMessage">
+        <img src="/static/left.jpg" alt="" style="width: 100%;" @click="handleMessageDetail">
       </el-col>
       <el-col :span="12">
-        <img src="/static/right.jpg" alt="" style="width: 100%;" @click="handleKnowledge">
+        <img src="/static/right.jpg" alt="" style="width: 100%;" @click="handleModelDetail">
       </el-col>
     </el-row>
     <app-footer/>
@@ -118,6 +118,7 @@
 
 <script>
 import appFooter from '../components/footer'
+import { getMessageList, getModelList } from '@/api/table'
 export default {
   components: { appFooter },
   data() {
@@ -160,6 +161,26 @@ export default {
     },
     handleWeather() {
       location.href = 'https://www.baidu.com/s?wd=' + this.city + '天气'
+    },
+    handleMessageDetail() {
+      const listQuery = {
+        page: 1,
+        limit: 1,
+        title: ''
+      }
+      getMessageList(listQuery).then(response => {
+        this.$router.push({ name: 'appMessageDetail', params: { id: response.data.list[0].id }})
+      })
+    },
+    handleModelDetail() {
+      const listQuery = {
+        page: 1,
+        limit: 1,
+        title: ''
+      }
+      getModelList(listQuery).then(response => {
+        this.$router.push({ name: 'appModelDetail', params: { id: response.data.list[0].id }})
+      })
     }
   }
 }
