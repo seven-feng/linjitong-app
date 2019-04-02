@@ -192,6 +192,20 @@ export const constantRouterMap = [
     component: () => import('@/views/gap'),
     hidden: true
   },
+  // 我的
+  {
+    path: '/profile',
+    name: 'appProfile',
+    component: () => import('@/views/profile'),
+    hidden: true
+  },
+  // 我的信息
+  {
+    path: '/userInfo',
+    name: 'appUserInfo',
+    component: () => import('@/views/profile/userInfo'),
+    hidden: true
+  },
   { path: '*', redirect: '/404', hidden: true }
 ]
 

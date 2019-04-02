@@ -8,8 +8,8 @@
       <svg-icon :icon-class="$route.path.indexOf('sysmessage') === -1 ? 'message-inactive' : 'message-active'" class="icon"/>
       <span>消息</span>
     </section>
-    <section class="footer-item" @click="$router.push({ name: 'appHome'})">
-      <svg-icon :icon-class="$route.path.indexOf('lala') === -1 ? 'user-inactive' : 'user-active'" class="icon"/>
+    <section class="footer-item" @click="$router.push({ name: 'appProfile'})">
+      <svg-icon :icon-class="$route.path.indexOf('profile') === -1 ? 'user-inactive' : 'user-active'" class="icon"/>
       <span>我的</span>
     </section>
   </div>
