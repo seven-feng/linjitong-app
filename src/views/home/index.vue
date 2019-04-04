@@ -106,10 +106,10 @@
     </section>
     <el-row :gutter="2" style="margin-left: 0; margin-right: 0;">
       <el-col :span="12">
-        <img src="/static/left.jpg" alt="" style="width: 100%;" @click="handleMessageDetail">
+        <img :src="leftImg" alt="" style="width: 100%; height: 6rem;" @click="handleMessageDetail">
       </el-col>
       <el-col :span="12">
-        <img src="/static/right.jpg" alt="" style="width: 100%;" @click="handleModelDetail">
+        <img :src="rightImg" alt="" style="width: 100%; height: 6rem;" @click="handleModelDetail">
       </el-col>
     </el-row>
     <app-footer/>
@@ -125,11 +125,42 @@ export default {
     return {
       city: '', // 定位城市
       items: ['/static/home-main.jpg', '/static/home-main1.jpg'],
-      searchContent: ''
+      searchContent: '',
+      messageId: '',
+      modelId: '',
+      leftImg: '',
+      rightImg: ''
     }
   },
   created() {
     this.city = this.$store.getters.location
+    const listQuery = {
+      page: 1,
+      limit: 1,
+      title: ''
+    }
+    getMessageList(listQuery).then(response => {
+      this.messageId = response.data.list[0].id
+      const content = response.data.list[0].content
+      if (content !== '' && content.indexOf('img') > 0) { // 从content中提取第一张图片的路径
+        var a = content.substring(content.indexOf('img'))
+        var b = a.substring(a.indexOf('src="') + 5, a.indexOf('/>'))
+        this.leftImg = '/TDS/' + b.substring(0, b.indexOf('"'))
+      } else {
+        this.leftImg = '/static/left.jpg'
+      }
+    })
+    getModelList(listQuery).then(response => {
+      this.modelId = response.data.list[0].id
+      const content = response.data.list[0].content
+      if (content !== '' && content.indexOf('img') > 0) { // 从content中提取第一张图片的路径
+        var a = content.substring(content.indexOf('img'))
+        var b = a.substring(a.indexOf('src="') + 5, a.indexOf('/>'))
+        this.rightImg = '/TDS/' + b.substring(0, b.indexOf('"'))
+      } else {
+        this.rightImg = '/static/right.jpg'
+      }
+    })
   },
   methods: {
     handleLocation() {
@@ -163,24 +194,10 @@ export default {
       location.href = 'https://www.baidu.com/s?wd=' + this.city + '天气'
     },
     handleMessageDetail() {
-      const listQuery = {
-        page: 1,
-        limit: 1,
-        title: ''
-      }
-      getMessageList(listQuery).then(response => {
-        this.$router.push({ name: 'appMessageDetail', params: { id: response.data.list[0].id }})
-      })
+      this.$router.push({ name: 'appMessageDetail', params: { id: this.messageId }})
     },
     handleModelDetail() {
-      const listQuery = {
-        page: 1,
-        limit: 1,
-        title: ''
-      }
-      getModelList(listQuery).then(response => {
-        this.$router.push({ name: 'appModelDetail', params: { id: response.data.list[0].id }})
-      })
+      this.$router.push({ name: 'appModelDetail', params: { id: this.modelId }})
     }
   }
 }
