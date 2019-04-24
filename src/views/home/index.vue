@@ -140,25 +140,29 @@ export default {
       title: ''
     }
     getMessageList(listQuery).then(response => {
-      this.messageId = response.data.list[0].id
-      const content = response.data.list[0].content
-      if (content !== '' && content.indexOf('img') > 0) { // 从content中提取第一张图片的路径
-        var a = content.substring(content.indexOf('img'))
-        var b = a.substring(a.indexOf('src="') + 5, a.indexOf('/>'))
-        this.leftImg = '/TDS/' + b.substring(0, b.indexOf('"'))
-      } else {
-        this.leftImg = '/static/left.jpg'
+      if (response.data && response.data.list.length > 0) {
+        this.messageId = response.data.list[0].id
+        const content = response.data.list[0].content
+        if (content !== '' && content.indexOf('img') > 0) { // 从content中提取第一张图片的路径
+          var a = content.substring(content.indexOf('img'))
+          var b = a.substring(a.indexOf('src="') + 5, a.indexOf('/>'))
+          this.leftImg = '/TDS/' + b.substring(0, b.indexOf('"'))
+        } else {
+          this.leftImg = '/static/left.jpg'
+        }
       }
     })
     getModelList(listQuery).then(response => {
-      this.modelId = response.data.list[0].id
-      const content = response.data.list[0].content
-      if (content !== '' && content.indexOf('img') > 0) { // 从content中提取第一张图片的路径
-        var a = content.substring(content.indexOf('img'))
-        var b = a.substring(a.indexOf('src="') + 5, a.indexOf('/>'))
-        this.rightImg = '/TDS/' + b.substring(0, b.indexOf('"'))
-      } else {
-        this.rightImg = '/static/right.jpg'
+      if (response.data && response.data.list.length > 0) {
+        this.modelId = response.data.list[0].id
+        const content = response.data.list[0].content
+        if (content !== '' && content.indexOf('img') > 0) { // 从content中提取第一张图片的路径
+          var a = content.substring(content.indexOf('img'))
+          var b = a.substring(a.indexOf('src="') + 5, a.indexOf('/>'))
+          this.rightImg = '/TDS/' + b.substring(0, b.indexOf('"'))
+        } else {
+          this.rightImg = '/static/right.jpg'
+        }
       }
     })
   },
